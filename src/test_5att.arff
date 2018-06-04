@@ -1,0 +1,10 @@
+@relation test_5att
+
+@attribute 'sg' {1.005,1.010,1.015,1.020,1.025}
+@attribute 'sc' numeric
+@attribute 'hemo' numeric
+@attribute 'dm' {yes,no}
+@attribute 'pe' {yes,no} 
+@attribute 'class' {ckd,notckd}
+
+@data
