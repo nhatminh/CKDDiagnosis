@@ -1,0 +1,10 @@
+Regarding to DecisionTree.java:
+  Input: a line of new data stored in 'newRecord.txt'
+    E.g. 1.025,0.6,15.9,no,no,? // represent 5 attributes sg,sc,hemo,dm,pe with corresponding values + 1 class with "?" value
+
+  Output: a String of "ckd" or "notckd"
+
+Supporting materials:
+- DecisionTree_Model_5att.model : decision tree model trained with 5 attributes, i.e. sg,sc,hemo,dm,pe
+- test_5att.arff: arff file that makes the data in 'newRecord.txt' readable by the decision tree model
+- variable 'rootPath' in 'DecisionTree.java' should be modified properly to be able read the 'newRecord.txt', 'DecisionTree_Model_5att.model', 'test_5att.arff'.
