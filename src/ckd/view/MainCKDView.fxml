@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ckd.view.MainCKDController">
+   <center>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+            <Button mnemonicParsing="false" onAction="#goReceptionist" prefHeight="200.0" prefWidth="421.0" text="RECEPTIONIST" textAlignment="CENTER">
+               <font>
+                  <Font name="Verdana" size="36.0" />
+               </font>
+            </Button>
+          <Button mnemonicParsing="false" onAction="#goPhysician" prefHeight="200.0" prefWidth="400.0" text="PHYSICIAN">
+               <font>
+                  <Font name="Verdana" size="36.0" />
+               </font></Button>
+        </items>
+         <padding>
+            <Insets left="100.0" />
+         </padding>
+      </ToolBar>
+   </center>
+</BorderPane>

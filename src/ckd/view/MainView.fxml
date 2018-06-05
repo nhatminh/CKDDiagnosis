@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ckd.view.MainViewController">
+   <top>
+      <ToolBar prefHeight="50.0" prefWidth="1000.0" BorderPane.alignment="TOP_CENTER">
+         <items>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="CHRONIC KIDNEY DIAGNOSTICS SYSTEM " textAlignment="CENTER">
+               <font>
+                  <Font name="Verdana Bold" size="32.0" />
+               </font>
+            </Label>
+         </items>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ToolBar>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#goHome" text="HOME" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
