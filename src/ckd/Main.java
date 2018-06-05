@@ -2,9 +2,13 @@ package ckd;
 
 import java.io.IOException;
 
+import ckd.Physician.string;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
@@ -52,6 +56,7 @@ public class Main extends Application {
 		BorderPane physician = loader.load();
 		mainLayout.setCenter(physician);
 	}
+	
 	public static void showAddNewPatient() throws IOException{
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("view/AddNewPatient.fxml"));
@@ -81,6 +86,11 @@ public class Main extends Application {
 		addDialogStage.showAndWait();
 
 	}
+	
+	//public static void showPatientList() {
+		
+	//}
+	
 	
 	public static void main(String[] args) {
 		launch(args);

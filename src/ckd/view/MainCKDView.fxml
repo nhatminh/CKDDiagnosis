@@ -12,7 +12,7 @@
    <center>
       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
-            <Button mnemonicParsing="false" onAction="#goReceptionist" prefHeight="200.0" prefWidth="421.0" text="RECEPTIONIST" textAlignment="CENTER">
+            <Button lineSpacing="50.0" mnemonicParsing="false" onAction="#goReceptionist" prefHeight="200.0" prefWidth="421.0" text="RECEPTIONIST" textAlignment="CENTER">
                <font>
                   <Font name="Verdana" size="36.0" />
                </font>
@@ -25,6 +25,9 @@
          <padding>
             <Insets left="100.0" />
          </padding>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </ToolBar>
    </center>
 </BorderPane>

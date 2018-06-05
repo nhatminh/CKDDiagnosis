@@ -6,6 +6,7 @@ import ckd.Main;
 import javafx.fxml.FXML;
 
 public class ReceptionistController {
+	
 	@FXML
 	private void addBtn() throws IOException {
 		Main.showAddNewPatient();

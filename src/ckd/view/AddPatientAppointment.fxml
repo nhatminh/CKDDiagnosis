@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<Pane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ckd.view.AddNewPatientController">
+<Pane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ckd.view.AddNewAppointmentController">
    <children>
       <Pane prefHeight="93.0" prefWidth="500.0">
          <children>
@@ -46,21 +46,21 @@
             <Label text="APPOINTMENT TYPE" GridPane.rowIndex="2" />
             <Label text="PHYSICIAN NAME" GridPane.rowIndex="3" />
             <Label text="DATE " GridPane.rowIndex="4" />
-            <TextField fx:id="fullnameField" prefHeight="25.0" prefWidth="334.0" GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="patientnameField" prefHeight="25.0" prefWidth="334.0" GridPane.columnIndex="1" />
+            <TextField fx:id="patientIDField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ChoiceBox fx:id="physicianField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="appointmentTypeField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="TIME " GridPane.rowIndex="5" />
-            <DatePicker prefHeight="25.0" prefWidth="172.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <DatePicker fx:id="dateAppointmentField" prefHeight="25.0" prefWidth="172.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label text="REASON" GridPane.rowIndex="6" />
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextArea fx:id="reasonField" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
          <padding>
             <Insets right="20.0" />
          </padding>
       </GridPane>
-      <Pane layoutX="14.0" layoutY="657.0" prefHeight="43.0" prefWidth="475.0">
+      <Pane layoutX="13.0" layoutY="443.0" prefHeight="43.0" prefWidth="475.0">
          <children>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="500.0" spacing="30.0">
                <children>

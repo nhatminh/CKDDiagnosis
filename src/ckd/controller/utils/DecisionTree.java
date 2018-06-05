@@ -35,7 +35,7 @@ public class DecisionTree {
         
         // Perform prediction
         double prediction = cls.classifyInstance(patientRecord.instance(patientRecord.numInstances()-1));
-        
+
         // Retrieve label of test instance
         String diagnosis = patientRecord.classAttribute().value((int) prediction); 
         
