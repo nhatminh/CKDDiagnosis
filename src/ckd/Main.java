@@ -2,7 +2,6 @@ package ckd;
 
 import java.io.IOException;
 
-import ckd.Physician.string;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -87,9 +86,20 @@ public class Main extends Application {
 
 	}
 	
-	//public static void showPatientList() {
+	public static void generateReport() throws IOException{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("view/GenerateMonthlyReport.fxml"));
+		Pane generateMonthlyReport = loader.load();
 		
-	//}
+		Stage addDialogStage = new Stage();
+		addDialogStage.setTitle("Generate Monthly Report");
+		addDialogStage.initModality(Modality.WINDOW_MODAL);
+		addDialogStage.initOwner(primaryStage);
+		Scene scene = new Scene(generateMonthlyReport);
+		addDialogStage.setScene(scene);
+		addDialogStage.showAndWait();
+	}
+	
 	
 	
 	public static void main(String[] args) {

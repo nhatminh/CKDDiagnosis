@@ -15,4 +15,8 @@ public class ReceptionistController {
 	private void appointmentBtn() throws IOException {
 		Main.showPatientAppointment();
 	}
+	@FXML
+	private void generateReportBtn() throws IOException {
+		Main.generateReport();
+	}
 }

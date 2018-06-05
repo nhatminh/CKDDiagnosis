@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="602.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <Pane prefHeight="70.0" BorderPane.alignment="CENTER">
          <children>
@@ -100,7 +100,7 @@
       </Pane>
    </left>
    <center>
-      <Pane prefHeight="414.0" prefWidth="417.0" BorderPane.alignment="TOP_LEFT">
+      <Pane prefHeight="414.0" BorderPane.alignment="TOP_LEFT">
          <children>
             <TableView layoutX="6.0" layoutY="42.0" prefHeight="100.0" prefWidth="374.0" BorderPane.alignment="CENTER">
               <columns>
@@ -113,14 +113,14 @@
                   <TableColumn prefWidth="100.0" text="Class" />
               </columns>
             </TableView>
-            <Label layoutX="6.0" layoutY="14.0" text="Patient Record Result ~">
+            <Label layoutX="6.0" layoutY="14.0" text="View Patient Record Details from Patient List">
                <font>
                   <Font name="Verdana" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="6.0" layoutY="159.0" text="Current Patient Record Details">
+            <Label layoutX="6.0" layoutY="159.0" text="Current Patient ">
                <font>
-                  <Font size="15.0" />
+                  <Font name="Verdana Bold" size="15.0" />
                </font>
             </Label>
             <TableView layoutX="6.0" layoutY="191.0" prefHeight="100.0" prefWidth="374.0">
@@ -134,30 +134,30 @@
                   <TableColumn prefWidth="100.0" />
                </columns>
             </TableView>
-            <Button layoutX="155.0" layoutY="301.0" mnemonicParsing="false" text="View Result" />
-            <TextArea layoutX="6.0" layoutY="339.0" prefHeight="80.0" prefWidth="378.0">
-               <font>
-                  <Font name="System Bold" size="38.0" />
-               </font>
-            </TextArea>
+            <Button layoutX="46.0" layoutY="302.0" mnemonicParsing="false" text="View Recommendation" />
             <Label layoutX="164.0" layoutY="371.0" />
-            <Label layoutX="14.0" layoutY="427.0" text="Explaination" />
-            <TextArea layoutX="6.0" layoutY="446.0" prefHeight="73.0" prefWidth="376.0" />
-            <Label layoutX="164.0" layoutY="357.0" text="CKD" textFill="RED">
+            <Label layoutX="6.0" layoutY="399.0" text="Explaination" />
+            <TextArea layoutX="4.0" layoutY="426.0" maxHeight="102.0" prefHeight="102.0" prefWidth="376.0" />
+            <Label layoutX="163.0" layoutY="339.0" text="CKD" textFill="RED">
                <font>
                   <Font size="31.0" />
                </font>
             </Label>
+            <Button layoutX="205.0" layoutY="302.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="142.0" text="Save Recommendation" />
+            <TextField layoutX="197.0" layoutY="157.0" prefHeight="25.0" prefWidth="109.0" />
+            <Label layoutX="181.0" layoutY="161.0" text="ID" />
+            <Button layoutX="318.0" layoutY="157.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="View" />
+            <Separator layoutX="2.0" layoutY="387.0" prefHeight="0.0" prefWidth="374.0" />
          </children>
          <BorderPane.margin>
-            <Insets right="10.0" />
+            <Insets />
          </BorderPane.margin>
       </Pane>
    </center>
    <right>
-      <Pane prefHeight="532.0" prefWidth="201.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="532.0" BorderPane.alignment="CENTER">
          <children>
-            <TreeView layoutX="6.0" layoutY="39.0" prefHeight="475.0" prefWidth="194.0" />
+            <TreeView layoutX="6.0" layoutY="39.0" prefHeight="484.0" prefWidth="194.0" />
             <Label layoutX="6.0" layoutY="14.0" text="DECISION TREE">
                <font>
                   <Font name="Verdana" size="20.0" />
@@ -165,7 +165,7 @@
             </Label>
          </children>
          <BorderPane.margin>
-            <Insets left="50.0" right="10.0" />
+            <Insets right="10.0" />
          </BorderPane.margin>
       </Pane>
    </right>
