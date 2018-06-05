@@ -11,7 +11,7 @@ import java.io.File;
 public class DecisionTree {
     public static void main(String[] args) throws Exception
     {
-		    String rootPath = new File("").getAbsolutePath();
+		String rootPath = new File("").getAbsolutePath()+ "\\DTRule";
 		
         // Load model
         Classifier cls = (Classifier) weka.core.SerializationHelper.read(rootPath+"\\DecisionTree_Model_5att.model");
