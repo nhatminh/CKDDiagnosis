@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ckd.view.MainViewController">
+<BorderPane prefHeight="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ckd.view.MainViewController">
    <top>
       <ToolBar prefHeight="50.0" prefWidth="1000.0" BorderPane.alignment="TOP_CENTER">
          <items>
@@ -27,6 +28,9 @@
          <children>
             <Button mnemonicParsing="false" onAction="#goHome" text="HOME" />
          </children>
+         <BorderPane.margin>
+            <Insets top="50.0" />
+         </BorderPane.margin>
       </HBox>
    </bottom>
 </BorderPane>
