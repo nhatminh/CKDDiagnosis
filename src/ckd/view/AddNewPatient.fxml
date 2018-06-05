@@ -58,7 +58,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="500.0" spacing="30.0">
                <children>
-                  <Button mnemonicParsing="false" prefWidth="100.0" text="Register" />
+                  <Button onAction="#button" mnemonicParsing="false" prefWidth="100.0" text="Register" />
                   <Button mnemonicParsing="false" prefWidth="100.0" text="Cancel" />
                </children>
             </HBox>
