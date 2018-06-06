@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
@@ -51,8 +52,8 @@ public class Main extends Application {
 	
 	public static void showPhysicianScene() throws IOException{
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("view/Physician/PhysicianDept2.fxml"));
-		BorderPane physician = loader.load();
+		loader.setLocation(Main.class.getResource("view/physician/PhysicianDept2.fxml"));
+		AnchorPane physician = loader.load();
 		mainLayout.setCenter(physician);
 	}
 	

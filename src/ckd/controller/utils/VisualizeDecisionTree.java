@@ -59,6 +59,18 @@ public class VisualizeDecisionTree {
         return DTRunner(sc,hemo, dm, sg);
 	}
 	
+	public static boolean testDecisionTree1() throws Exception{
+		// Read attributes
+		BufferedReader reader = new BufferedReader(new FileReader(rootPath+"\\newRecord.txt"));
+        String toWrite = ""; // 1.025,0.6,15.9,no,no,? <=> sg, sc, hemo, dm, pe, class
+        String line = null;
+        while ((line = reader.readLine()) != null) {
+        	toWrite += line;	
+        }
+        
+        return detectCKD(toWrite);
+	}
+	
 	public static Image DTRunner(double sc, double hemo, String dm,  double sg) throws IOException{
 		// Display branch of decision tree in each specific case
         String imgName = null;

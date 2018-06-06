@@ -1,4 +1,4 @@
-package ckd.view.Physician;
+package ckd.view.physician;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,7 +25,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import weka.gui.beans.TextViewer;
 
-public class PhysicianController implements Initializable{
+public class PhysicianController1 implements Initializable{
 	public class Patient{
 		private final SimpleStringProperty id;
 	    private final SimpleStringProperty name;
@@ -79,7 +79,9 @@ public class PhysicianController implements Initializable{
 	@FXML
 	Button btnViewMedicalRec;
 	@FXML
-	Button btnSave;
+	Button btnAgree;
+	@FXML
+	Button btnDisagree;
 	@FXML
 	Button btnPrint;
 	@FXML
@@ -104,14 +106,14 @@ public class PhysicianController implements Initializable{
 		nameCol = new TableColumn("Name");
 		classCol = new TableColumn("Class");
 		
-		setCellValueFactories();
+		
 			
-//        TableColumn controlCol = new TableColumn("Control");
         tblPatientList.getColumns().addAll(idCol, nameCol, classCol);
         
-        tblPatientList.getSelectionModel().selectedIndexProperty().addListener(new RowSelectChangeListener());
-        
         tblPatientList.setItems(data);
+        setCellValueFactories();
+        
+        tblPatientList.getSelectionModel().selectedIndexProperty().addListener(new RowSelectChangeListener());
         tblPatientList.getSelectionModel().select(0);
 
 	}
@@ -147,30 +149,5 @@ public class PhysicianController implements Initializable{
 		}
 	}
 	
-	public void save(ActionEvent actionEvent) {
-		
-	}
-	
-	public void print(ActionEvent actionEvent) {
-		
-	}
-	
-	public void viewRec(ActionEvent actionEvent) {
-		try {
-			Image img = VisualizeDecisionTree.testDecisionTree();
-			imgDTRule.setImage(img);
-			imgDTRule.setPreserveRatio(true);
-			imgDTRule.setSmooth(true);
-			imgDTRule.setCache(true);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		lblCKDresult.setText("_ _");
-	}
-	
-	public void viewMedical(ActionEvent actionEvent) {
-		
-	}
     
 }
