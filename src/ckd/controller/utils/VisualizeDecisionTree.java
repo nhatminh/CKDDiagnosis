@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import ckd.model.MedicalRecord;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import weka.classifiers.Classifier;
@@ -70,6 +71,10 @@ public class VisualizeDecisionTree {
         
         return detectCKD(toWrite);
 	}
+	
+//	public static Image DTRunner(MedicalRecord med) {
+//		return DTRunner(med.sc, me);
+//	}
 	
 	public static Image DTRunner(double sc, double hemo, String dm,  double sg) throws IOException{
 		// Display branch of decision tree in each specific case
