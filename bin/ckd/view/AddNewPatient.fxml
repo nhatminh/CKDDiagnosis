@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ckd.view.AddNewPatientController"  stylesheets="@bootstrap3.css">
+   <children>
+      <Pane prefHeight="93.0" prefWidth="500.0">
+         <children>
+            <Label layoutX="14.0" layoutY="10.0" text="REGISTER NEW PATIENT">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Separator layoutX="14.0" layoutY="47.0" prefHeight="0.0" prefWidth="458.0" />
+            <Label layoutX="14.0" layoutY="59.0" text="CONTACT INFORMATION">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Separator layoutX="14.0" layoutY="85.0" prefHeight="0.0" prefWidth="457.0" />
+         </children>
+      </Pane>
+      <GridPane prefHeight="270.0" prefWidth="460.0" vgap="2.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="219.0" minWidth="10.0" prefWidth="118.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="377.0" minWidth="10.0" prefWidth="342.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="30.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="30.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="30.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="FULL NAME" />
+            <Label text="ADDRESS" GridPane.rowIndex="1" />
+            <Label text="CITY" GridPane.rowIndex="2" />
+            <Label text="PHONE" GridPane.rowIndex="3" />
+            <Label text="EMAIL" GridPane.rowIndex="4" />
+            <TextField fx:id="fullnameField" prefHeight="25.0" prefWidth="334.0" GridPane.columnIndex="1" />
+            <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="cityField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" top="100.0" />
+         </padding>
+      </GridPane>
+      <Pane layoutX="14.0" layoutY="657.0" prefHeight="43.0" prefWidth="475.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="500.0" spacing="30.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#registerPatient" prefWidth="100.0" text="Register" styleClass="success"/>
+                  <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#cancel" prefWidth="100.0" text="Cancel" styleClass="success"/>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <Pane layoutX="14.0" layoutY="260.0" prefHeight="61.0" prefWidth="457.0">
+         <children>
+            <Label layoutY="14.0" text="PATIENT MEDICAL INFORMATION">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Separator layoutX="-3.0" layoutY="37.0" prefHeight="3.0" prefWidth="457.0" />
+         </children>
+      </Pane>
+      <GridPane layoutY="321.0" prefHeight="270.0" prefWidth="460.0" vgap="3.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="99.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="365.0" minWidth="10.0" prefWidth="321.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="30.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="30.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="30.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="30.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="100.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="AGE" GridPane.rowIndex="1" />
+            <Label text="GENDER" GridPane.rowIndex="2" />
+            <Label text="MARRIAGE?" GridPane.rowIndex="3" />
+            <Label text="BLOOD TYPE" GridPane.rowIndex="4" />
+            <Label text="HEIGHT" GridPane.rowIndex="5" />
+            <TextField fx:id="ageField" onMouseClicked="#showAge" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="heightField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="PATIENT NOTE" GridPane.rowIndex="6" />
+            <TextArea fx:id="patientNoteField" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label text="DATE OF BIRTH" />
+            <DatePicker fx:id="dateofBirthField" prefHeight="25.0" prefWidth="172.0" GridPane.columnIndex="1" />
+            <ChoiceBox fx:id="marriageField" onDragDetected="#initialize" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="genderField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ChoiceBox fx:id="bloodTypeField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+      </GridPane>
+   </children>
+</Pane>

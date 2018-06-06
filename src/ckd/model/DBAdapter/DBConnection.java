@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 
 public class DBConnection {
 
-	public Connection connection;
+	public static Connection connection;
 
-	public Connection getConnection() {
+	public static Connection getConnection() {
 		String dbName = "ckd";
 		String userName = "root";
 		String password = "";
