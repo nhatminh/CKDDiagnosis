@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
@@ -14,22 +15,25 @@ import javax.swing.JLabel;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
+import weka.classifiers.Classifier;
+import weka.core.Instances;
+import weka.core.converters.ConverterUtils.DataSource;
 
-public class VisualizeDecisionTree extends JFrame {
+public class VisualizeDecisionTree {
 	
 	private static String rootPath = new File("").getAbsolutePath()+ "\\DTRule";
 	
-	public VisualizeDecisionTree(String imgName) {
-		String imagePath = rootPath + imgName;
-		JFrame frame = new JFrame();
-		ImageIcon icon = new ImageIcon(imagePath);
-		JLabel label = new JLabel(icon);
-		
-		frame.add(label);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.pack();
-		frame.setVisible(true);
-	}
+//	public VisualizeDecisionTree(String imgName) {
+//		String imagePath = rootPath + imgName;
+//		JFrame frame = new JFrame();
+//		ImageIcon icon = new ImageIcon(imagePath);
+//		JLabel label = new JLabel(icon);
+//		
+//		frame.add(label);
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.pack();
+//		frame.setVisible(true);
+//	}
 	
 	public static void main(String[] args) throws Exception {
 		testDecisionTree();
@@ -39,7 +43,7 @@ public class VisualizeDecisionTree extends JFrame {
 	public static Image testDecisionTree() throws Exception{
 		// Read attributes
 		BufferedReader reader = new BufferedReader(new FileReader(rootPath+"\\newRecord.txt"));
-        String toWrite = "";
+        String toWrite = ""; // 1.025,0.6,15.9,no,no,? <=> sg, sc, hemo, dm, pe, class
         String line = null;
         while ((line = reader.readLine()) != null) {
         	toWrite += line;	
@@ -51,7 +55,7 @@ public class VisualizeDecisionTree extends JFrame {
         double sc = Double.parseDouble(attArray[1]);
         double hemo = Double.parseDouble(attArray[2]);
         String dm = attArray[3];
-        
+        System.out.println(detectCKD(toWrite));
         return DTRunner(sc,hemo, dm, sg);
 	}
 	
@@ -89,4 +93,33 @@ public class VisualizeDecisionTree extends JFrame {
         BufferedImage bimg = ImageIO.read(new File(rootPath+imgName));
         return SwingFXUtils.toFXImage(bimg, null);
 	}
+	
+    public static boolean detectCKD(String toWrite) throws Exception {
+    	// Load model
+        Classifier cls = (Classifier) weka.core.SerializationHelper.read(rootPath+"\\DecisionTree_Model_5att.model");
+        
+    	FileWriter fw = new FileWriter(rootPath+"\\test_5att.arff", true);
+        fw.write("\n");
+        fw.write(toWrite);
+        fw.close();
+        
+        // Load test repository
+        DataSource source = new DataSource(rootPath+"\\test_5att.arff");
+        Instances patientRecord = source.getDataSet();
+        patientRecord.setClassIndex(patientRecord.numAttributes() - 1);
+        
+        // Perform prediction
+        double prediction = cls.classifyInstance(patientRecord.instance(patientRecord.numInstances()-1));
+
+        // Retrieve label of test instance
+        String diagnosis = patientRecord.classAttribute().value((int) prediction); 
+        if (diagnosis.equals("ckd")) {
+        	return true;
+        } else {
+        	return false;
+        }
+        // Print results
+        // System.out.println("Diagnosis Result " + ": " + diagnosis);
+        
+    }
 }
