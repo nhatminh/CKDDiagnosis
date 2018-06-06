@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="500.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ckd.receptionist.ReceptionistController">
+<BorderPane prefHeight="500.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ckd.view.receptionist.ReceptionistController">
    <top>
       <TextArea editable="false" prefHeight="50.0" prefWidth="809.0" text="RECEPTIONIST DEPARTMENT" BorderPane.alignment="CENTER">
          <font>
@@ -22,7 +22,11 @@
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" BorderPane.alignment="TOP_CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#addBtn" prefHeight="50.0" prefWidth="500.0" text="REGISTER NEW PATIENT">
+            <Button mnemonicParsing="false" onAction="#addBtn" prefHeight="50.0" prefWidth="500.0" text="REGISTER NEW PATIENT" >
+               <styleClass>
+                    <String fx:value="success"/>
+                    <String fx:value="lg"/>
+          	   </styleClass>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -31,11 +35,19 @@
                </font>
             </Button>
             <Button mnemonicParsing="false" onAction="#appointmentBtn" prefHeight="50.0" prefWidth="500.0" text="PATIENT APPOINTMENT SCHEDULING">
+               <styleClass>
+                    <String fx:value="success"/>
+                    <String fx:value="lg"/>
+          	   </styleClass>            
                <font>
                   <Font size="21.0" />
                </font>
             </Button>
             <Button mnemonicParsing="false" onAction="#generateReportBtn" prefHeight="50.0" prefWidth="500.0" text="ADMINISTRATIVE MONTHLY REPORT">
+               <styleClass>
+                    <String fx:value="success"/>
+                    <String fx:value="lg"/>
+          	   </styleClass>            
                <font>
                   <Font size="21.0" />
                </font>

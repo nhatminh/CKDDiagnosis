@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<Pane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ckd.view.AddNewPatientController">
+<Pane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ckd.view.AddNewPatientController"  stylesheets="@bootstrap3.css">
    <children>
       <Pane prefHeight="93.0" prefWidth="500.0">
          <children>
@@ -58,8 +66,8 @@
          <children>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="500.0" spacing="30.0">
                <children>
-                  <Button onAction="#button" mnemonicParsing="false" prefWidth="100.0" text="Register" />
-                  <Button mnemonicParsing="false" prefWidth="100.0" text="Cancel" />
+                  <Button mnemonicParsing="false" onAction="#registerPatient" prefWidth="100.0" text="Register" styleClass="success"/>
+                  <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#cancel" prefWidth="100.0" text="Cancel" styleClass="success"/>
                </children>
             </HBox>
          </children>

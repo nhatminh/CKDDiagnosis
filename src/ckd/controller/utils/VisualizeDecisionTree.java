@@ -1,18 +1,42 @@
 package ckd.controller.utils;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
+import java.net.MalformedURLException;
+
 import javax.swing.JFrame;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
 
 public class VisualizeDecisionTree extends JFrame {
 	
 	private static String rootPath = new File("").getAbsolutePath()+ "\\DTRule";
 	
-	public static void main(String[] args) throws Exception {
+	public VisualizeDecisionTree(String imgName) {
+		String imagePath = rootPath + imgName;
+		JFrame frame = new JFrame();
+		ImageIcon icon = new ImageIcon(imagePath);
+		JLabel label = new JLabel(icon);
 		
+		frame.add(label);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
+		frame.setVisible(true);
+	}
+	
+	public static void main(String[] args) throws Exception {
+		testDecisionTree();
+        
+	}
+	
+	public static Image testDecisionTree() throws Exception{
 		// Read attributes
 		BufferedReader reader = new BufferedReader(new FileReader(rootPath+"\\newRecord.txt"));
         String toWrite = "";
@@ -28,10 +52,11 @@ public class VisualizeDecisionTree extends JFrame {
         double hemo = Double.parseDouble(attArray[2]);
         String dm = attArray[3];
         
-        // Display general view of built decision tree
-        // new VisualizeDecisionTree(rootPath+"\\DT_Visualization.png");
-        
-        // Display branch of decision tree in each specific case
+        return DTRunner(sc,hemo, dm, sg);
+	}
+	
+	public static Image DTRunner(double sc, double hemo, String dm,  double sg) throws IOException{
+		// Display branch of decision tree in each specific case
         String imgName = null;
         if (sc > 1.2) {
         	imgName = "\\DT_sc_ckd.png";
@@ -60,18 +85,8 @@ public class VisualizeDecisionTree extends JFrame {
         		}
         	}
         }
-        new VisualizeDecisionTree(imgName);
-	}
-	
-	public VisualizeDecisionTree(String imgName) {
-		String imagePath = rootPath + imgName;
-		JFrame frame = new JFrame();
-		ImageIcon icon = new ImageIcon(imagePath);
-		JLabel label = new JLabel(icon);
-		
-		frame.add(label);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.pack();
-		frame.setVisible(true);
+//        new VisualizeDecisionTree(imgName);
+        BufferedImage bimg = ImageIO.read(new File(rootPath+imgName));
+        return SwingFXUtils.toFXImage(bimg, null);
 	}
 }

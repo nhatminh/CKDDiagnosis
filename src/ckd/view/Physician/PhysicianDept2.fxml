@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="650.0" prefWidth="1000.0" stylesheets="@../bootstrap3.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ckd.view.Physician.PhysicianController">
+   <top>
+      <Pane prefHeight="70.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label blendMode="DARKEN" layoutX="7.0" layoutY="17.0" text="PHYSICIAN DEPARTMENT">
+               <font>
+                  <Font name="Verdana" size="29.0" />
+               </font>
+            </Label>
+            <Separator layoutX="7.0" layoutY="48.0" prefHeight="4.0" prefWidth="987.0" />
+         </children>
+      </Pane>
+   </top>
+   <left>
+      <Pane prefHeight="442.0" prefWidth="410.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="15.0" layoutY="-1.0" text="PATIENT LIST">
+               <font>
+                  <Font name="Verdana" size="20.0" />
+               </font>
+            </Label>
+            <Separator layoutX="18.0" layoutY="24.0" prefHeight="0.0" prefWidth="379.0" />
+            <TableView fx:id="tblPatientList" layoutX="14.0" layoutY="31.0" prefHeight="348.0" prefWidth="395.0" />
+         </children>
+         <BorderPane.margin>
+            <Insets right="10.0" />
+         </BorderPane.margin>
+      </Pane>
+   </left>
+   <center>
+      <Pane prefHeight="414.0" BorderPane.alignment="TOP_LEFT">
+         <children>
+            <TableView layoutX="6.0" layoutY="42.0" prefHeight="100.0" prefWidth="374.0" BorderPane.alignment="CENTER">
+              <columns>
+                  <TableColumn prefWidth="71.0" text="ID" />
+                <TableColumn maxWidth="300.0" minWidth="20.0" prefWidth="44.0" text="sg" />
+                <TableColumn prefWidth="40.0" text="sc" />
+                  <TableColumn prefWidth="50.0" text="hemo" />
+                  <TableColumn prefWidth="40.0" text="dm" />
+                  <TableColumn prefWidth="40.0" text="pe" />
+                  <TableColumn prefWidth="100.0" text="Class" />
+              </columns>
+            </TableView>
+            <Label layoutX="6.0" layoutY="14.0" text="View Patient Record Details from Patient List">
+               <font>
+                  <Font name="Verdana" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="6.0" layoutY="159.0" text="Current Patient ">
+               <font>
+                  <Font name="Verdana Bold" size="15.0" />
+               </font>
+            </Label>
+            <TableView layoutX="6.0" layoutY="191.0" prefHeight="100.0" prefWidth="374.0">
+               <columns>
+                  <TableColumn prefWidth="71.0" text="ID" />
+                  <TableColumn maxWidth="300.0" minWidth="20.0" prefWidth="44.0" text="sg" />
+                  <TableColumn prefWidth="40.0" text="sc" />
+                  <TableColumn prefWidth="50.0" text="hemo" />
+                  <TableColumn prefWidth="40.0" text="dm" />
+                  <TableColumn prefWidth="40.0" text="pe" />
+                  <TableColumn prefWidth="100.0" />
+               </columns>
+            </TableView>
+            <Button fx:id="btnViewRec" layoutX="122.0" layoutY="299.0" mnemonicParsing="false" onAction="#viewRec" prefHeight="25.0" prefWidth="167.0" styleClass="success" text="View Recommendation" />
+            <Label layoutX="164.0" layoutY="371.0" />
+            <Label layoutX="2.0" layoutY="363.0" text="Explaination" />
+            <ImageView fx:id="imgDTRule" fitHeight="139.0" fitWidth="979.0" layoutX="-409.0" layoutY="399.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="lblCKDresult" layoutX="163.0" layoutY="339.0" text="CKD" textFill="RED">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtSelectedID" layoutX="205.0" layoutY="154.0" prefHeight="25.0" prefWidth="101.0" />
+            <Label layoutX="181.0" layoutY="161.0" text="ID">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Button fx:id="btnViewMedicalRec" layoutX="318.0" layoutY="153.0" mnemonicParsing="false" onAction="#viewMedical" prefHeight="25.0" prefWidth="62.0" styleClass="success" text="View" />
+            <Separator layoutX="2.0" layoutY="379.0" prefHeight="11.0" prefWidth="374.0" />
+            <Button fx:id="btnSave" layoutX="206.0" layoutY="541.0" mnemonicParsing="false" onAction="#save" prefHeight="32.0" prefWidth="75.0" styleClass="success" text="Save" />
+            <Button fx:id="btnPrint" layoutX="306.0" layoutY="541.0" mnemonicParsing="false" onAction="#print" prefHeight="32.0" prefWidth="74.0" styleClass="success" text="Print" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </Pane>
+   </center>
+   <right>
+      <Pane prefHeight="392.0" prefWidth="180.0" BorderPane.alignment="CENTER">
+         <children>
+            <TreeView layoutX="6.0" layoutY="39.0" prefHeight="345.0" prefWidth="172.0" />
+            <Label layoutX="6.0" layoutY="14.0" text="DECISION TREE">
+               <font>
+                  <Font name="Verdana" size="20.0" />
+               </font>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets right="10.0" />
+         </BorderPane.margin>
+      </Pane>
+   </right>
+</BorderPane>

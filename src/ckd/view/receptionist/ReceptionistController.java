@@ -1,4 +1,4 @@
-package ckd.receptionist;
+package ckd.view.receptionist;
 
 import java.io.IOException;
 

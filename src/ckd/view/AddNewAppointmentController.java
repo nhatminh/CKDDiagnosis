@@ -1,12 +1,20 @@
 package ckd.view;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import ckd.model.DBAdapter.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class AddNewAppointmentController {
 	ObservableList<String> appointmentTypeList = 
@@ -29,6 +37,9 @@ public class AddNewAppointmentController {
 	private TextField timeAppointmentField;
 	@FXML
 	private TextArea reasonField;
+	
+	@FXML
+	private Button btnCancel;
 		
 	@FXML
 	private void initialize() {
@@ -39,4 +50,14 @@ public class AddNewAppointmentController {
 		physicianField.setValue("mm");
 			
 		}	
+	
+	public void appointmentRegister(ActionEvent actionEvent) throws SQLException {
+		//TODO
+
+	}
+	
+	public void cancel(ActionEvent actionEvent) {
+		Stage stage = (Stage) btnCancel.getScene().getWindow();
+	    stage.close();
+	}
 }

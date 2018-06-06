@@ -11,6 +11,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
@@ -49,6 +51,9 @@ public class AddNewPatientController {
 
 	@FXML
 	private TextArea patientNoteField;
+	
+	@FXML
+	private Button btnCancel;
 
 	@FXML
 	private void initialize() {
@@ -71,7 +76,7 @@ public class AddNewPatientController {
 		ageField.setText(Integer.toString(age));
 	}
 
-	public void button(ActionEvent actionEvent) throws SQLException {
+	public void registerPatient(ActionEvent actionEvent) throws SQLException {
 		DBConnection dbConnection = new DBConnection();
 		Connection connection = dbConnection.getConnection();
 		java.sql.Date gettedDatePickerDate = java.sql.Date.valueOf(dateofBirthField.getValue());
@@ -88,5 +93,10 @@ public class AddNewPatientController {
 		statement.executeUpdate(sql);
 		System.out.println("Complete!");
 
+	}
+	
+	public void cancel(ActionEvent actionEvent) {
+		Stage stage = (Stage) btnCancel.getScene().getWindow();
+	    stage.close();
 	}
 }

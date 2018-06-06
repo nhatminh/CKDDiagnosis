@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@bootstrap3.css">
    <children>
       <Label layoutX="15.0" layoutY="14.0" text="ADMINISTRATIVE MANAGEMENT">
          <font>
@@ -31,7 +31,7 @@
       <DatePicker layoutX="97.0" layoutY="188.0" />
       <Label layoutX="299.0" layoutY="192.0" text="To Date" />
       <DatePicker layoutX="360.0" layoutY="188.0" />
-      <Button layoutX="570.0" layoutY="121.0" mnemonicParsing="false" text="Generate" />
-      <Button layoutX="570.0" layoutY="188.0" mnemonicParsing="false" text="Generate" />
+      <Button layoutX="570.0" layoutY="121.0" mnemonicParsing="false" text="Generate" styleClass="success"/>
+      <Button layoutX="570.0" layoutY="188.0" mnemonicParsing="false" text="Generate" styleClass="success"/>
    </children>
 </Pane>
