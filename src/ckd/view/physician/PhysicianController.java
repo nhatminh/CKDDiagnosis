@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import ckd.Main;
 import ckd.controller.utils.VisualizeDecisionTree;
 import ckd.model.MedicalRecord;
+import ckd.model.MedicalRecordSelected;
 import ckd.model.PersonalInfo;
 import ckd.model.DBAdapter.DBConnection;
 import javafx.beans.property.SimpleStringProperty;
@@ -36,6 +37,7 @@ import weka.gui.beans.TextViewer;
 public class PhysicianController implements Initializable {
 	private ObservableList<PersonalInfo> oblist;
 	private ObservableList<MedicalRecord> oblist2;
+	private ObservableList<MedicalRecordSelected> oblist3;
 
 	private class RowSelectChangeListener implements ChangeListener<Number> {
 		@Override
@@ -49,6 +51,29 @@ public class PhysicianController implements Initializable {
 			}
 
 			PersonalInfo p = oblist.get(ix);
+
+			try {
+				Connection con = DBConnection.getConnection();
+				oblist3 = FXCollections.observableArrayList();
+				String sql = "SELECT * from medical_record WHERE id= " + p.getId() + " ";
+				ResultSet rs = con.createStatement().executeQuery(sql);
+				while (rs.next()) {
+					oblist3.add(new MedicalRecordSelected(rs.getInt("id"), rs.getString("sg"), rs.getString("sc"),
+							rs.getString("hemo"), rs.getString("dm"), rs.getString("pe"), rs.getString("is_ckd")));
+				}
+			} catch (SQLException ex) {
+				Logger.getLogger(PhysicianController.class.getName()).log(Level.SEVERE, null, ex);
+			}
+
+			colIDDetails.setCellValueFactory(new PropertyValueFactory<>("id"));
+			colsg.setCellValueFactory(new PropertyValueFactory<>("sg"));
+			colsc.setCellValueFactory(new PropertyValueFactory<>("sc"));
+			colhemo.setCellValueFactory(new PropertyValueFactory<>("hemo"));
+			coldm.setCellValueFactory(new PropertyValueFactory<>("dm"));
+			colpe.setCellValueFactory(new PropertyValueFactory<>("pe"));
+			colClassDetails.setCellValueFactory(new PropertyValueFactory<>("is_ckd"));
+
+			tablePatientListDetails.setItems(oblist3);
 
 			// txtSelectedID.setText(String.valueOf(p.getId()));
 		}
@@ -72,21 +97,21 @@ public class PhysicianController implements Initializable {
 
 	// DEFINE TABLE RECORD DETAIL OF PATIENT LIST
 	@FXML
-	private TableView tablePatientListDetails;
+	private TableView<MedicalRecordSelected> tablePatientListDetails;
 	@FXML
-	private TableColumn colIDDetails;
+	private TableColumn<MedicalRecordSelected, Integer> colIDDetails;
 	@FXML
-	private TableColumn colsg;
+	private TableColumn<MedicalRecordSelected, String> colsg;
 	@FXML
-	private TableColumn colsc;
+	private TableColumn<MedicalRecordSelected, String> colsc;
 	@FXML
-	private TableColumn colhemo;
+	private TableColumn<MedicalRecordSelected, String> colhemo;
 	@FXML
-	private TableColumn coldm;
+	private TableColumn<MedicalRecordSelected, String> coldm;
 	@FXML
-	private TableColumn colpe;
+	private TableColumn<MedicalRecordSelected, String> colpe;
 	@FXML
-	private TableColumn colClassDetails;
+	private TableColumn<MedicalRecordSelected, String> colClassDetails;
 
 	// DEFINE TABLE RECORD DETAIL OF CURRENT PATIENT
 	@FXML
