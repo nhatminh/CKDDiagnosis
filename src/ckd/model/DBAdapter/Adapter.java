@@ -11,12 +11,13 @@ import ckd.model.PersonalInfo;
 
 public class Adapter {
 	private static Connection con;
-	public Adapter(){
+
+	public Adapter() {
 		con = DBConnection.getConnection();
-		
+
 	}
-	
-	public ArrayList<MedicalRecordSelected> getMedicalRecord(int id) throws SQLException{
+
+	public ArrayList<MedicalRecordSelected> getMedicalRecord(int id) throws SQLException {
 		ArrayList<MedicalRecordSelected> rs_med = new ArrayList<>();
 		String sql = "SELECT * from medical_record WHERE id= " + id + " ";
 		ResultSet rs = con.createStatement().executeQuery(sql);
@@ -24,23 +25,23 @@ public class Adapter {
 			rs_med.add(new MedicalRecordSelected(rs.getInt("id"), rs.getString("sg"), rs.getString("sc"),
 					rs.getString("hemo"), rs.getString("dm"), rs.getString("pe"), rs.getString("is_ckd")));
 		}
-		
+
 		return rs_med;
 	}
-	
-	public ArrayList<MedicalRecord> getMedicalRecord(String id) throws SQLException{
+
+	public ArrayList<MedicalRecord> getMedicalRecord(String id) throws SQLException {
 		ArrayList<MedicalRecord> rs_med = new ArrayList<>();
 		String sql = "SELECT * from medical_record WHERE id= " + id + " ";
 		ResultSet rs = con.createStatement().executeQuery(sql);
 		while (rs.next()) {
-			rs_med.add(new MedicalRecord(rs.getInt("id"), rs.getString("sg"), rs.getString("sc"),
-					rs.getString("hemo"), rs.getString("dm"), rs.getString("pe")));
+			rs_med.add(new MedicalRecord(rs.getInt("id"), rs.getString("sg"), rs.getString("sc"), rs.getString("hemo"),
+					rs.getString("dm"), rs.getString("pe")));
 		}
-		
+
 		return rs_med;
 	}
-	
-	public ArrayList<PersonalInfo> getPatientInfo() throws SQLException{
+
+	public ArrayList<PersonalInfo> getPatientInfo() throws SQLException {
 		ArrayList<PersonalInfo> patient_list = new ArrayList<>();
 		String sql = "SELECT DISTINCT * from personal_info INNER JOIN medical_record ON personal_info.id=medical_record.id";
 		ResultSet rs = con.createStatement().executeQuery(sql);
@@ -48,12 +49,12 @@ public class Adapter {
 			patient_list.add(new PersonalInfo(rs.getInt("id"), rs.getString("full_name"), rs.getString("gender"),
 					rs.getString("age"), rs.getString("is_ckd")));
 		}
-		
+
 		return patient_list;
 	}
-	
-	public void insertRecResult(MedicalRecord med, String CKD_result){
-		//TODO
+
+	public void insertRecResult(MedicalRecord med, String CKD_result) {
+		String sql = "INSERT INTO `medical_record` (`is_ckd`) VALUES (" + CKD_result + ") WHERE (" + med.getId() + ")";
 	}
-	
+
 }
