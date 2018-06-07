@@ -54,7 +54,7 @@
             <TableColumn fx:id="colPhysRec1" text="PhysRec" />
 			</columns>
 		</TableView>
-		<Label layoutX="465.0" layoutY="70.0" text="Selcted Patient Medical Record ">
+		<Label layoutX="465.0" layoutY="70.0" text="Selected Patient Medical Record ">
 			<font>
 				<Font name="Verdana Bold" size="16.0" />
 			</font>

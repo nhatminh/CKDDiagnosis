@@ -80,6 +80,10 @@ public class Adapter {
 		statement.executeUpdate(sql);
 		System.out.println("Insert Patient!");
 		
+		String sql1 = "UPDATE medical_record SET diagnostic_recommendation='',physican_recommendation='' WHERE id = 10;";
+		Statement statement1 = con.createStatement();
+		statement1.executeUpdate(sql1);
+		
 		return patientID;
 	}
 
