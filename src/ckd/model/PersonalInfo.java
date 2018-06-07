@@ -2,15 +2,16 @@ package ckd.model;
 
 public class PersonalInfo {
 	int id;
-	String full_name, gender, age, is_ckd;
+	String full_name, gender, age, diagRec, physRec;
 
-	public PersonalInfo(int id, String full_name, String gender, String age, String is_ckd) {
+	public PersonalInfo(int id, String full_name, String gender, String age, String diagRec, String physRec) {
 		super();
 		this.id = id;
 		this.full_name = full_name;
 		this.gender = gender;
 		this.age = age;
-		this.is_ckd = is_ckd;
+		this.diagRec = diagRec;
+		this.physRec = physRec;
 	}
 
 	public int getId() {
@@ -45,12 +46,21 @@ public class PersonalInfo {
 		this.age = age;
 	}
 
-	public String getIs_ckd() {
-		return is_ckd;
+	public String getPhysRec() {
+		return physRec;
 	}
 
-	public void setIs_ckd(String is_ckd) {
-		this.is_ckd = is_ckd;
+	public void setPhysRec(String physRec) {
+		this.physRec = physRec;
 	}
+	
+	public String getDiagRec() {
+		return diagRec;
+	}
+
+	public void setDiagRec(String diagRec) {
+		this.diagRec = diagRec;
+	}
+
 
 }

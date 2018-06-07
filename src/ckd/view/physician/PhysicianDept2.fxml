@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -19,83 +13,61 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="617.0" prefWidth="995.0"
-	stylesheets="@../bootstrap3.css" xmlns="http://javafx.com/javafx/8"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="ckd.view.physician.PhysicianController">
+<AnchorPane prefHeight="575.0" prefWidth="995.0" stylesheets="@../bootstrap3.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ckd.view.physician.PhysicianController">
 	<children>
 
 		<Pane prefHeight="70.0" BorderPane.alignment="CENTER">
 			<children>
-				<Label blendMode="DARKEN" layoutX="7.0" layoutY="17.0"
-					text="PHYSICIAN DEPARTMENT">
+				<Label blendMode="DARKEN" layoutX="7.0" layoutY="17.0" text="PHYSICIAN DEPARTMENT">
 					<font>
 						<Font name="Verdana" size="29.0" />
 					</font>
 				</Label>
-				<Separator layoutX="7.0" layoutY="48.0" prefHeight="4.0"
-					prefWidth="987.0" />
+				<Separator layoutX="7.0" layoutY="48.0" prefHeight="4.0" prefWidth="987.0" />
 			</children>
 		</Pane>
 
 
-		<Pane prefHeight="442.0" prefWidth="450.0"
-			BorderPane.alignment="CENTER">
+		<Pane prefHeight="442.0" prefWidth="450.0" BorderPane.alignment="CENTER">
 			<children>
 				<Label layoutX="14.0" layoutY="60.0" text="PATIENT LIST">
 					<font>
 						<Font name="Verdana" size="20.0" />
 					</font>
 				</Label>
-				<TableView fx:id="tablePatientList" layoutX="8.0"
-					layoutY="91.0" prefHeight="348.0" prefWidth="435.0" />
-				<Separator layoutX="8.0" layoutY="79.0" prefHeight="13.0"
-					prefWidth="435.0" />
+				<TableView fx:id="tablePatientList" layoutX="8.0" layoutY="91.0" prefHeight="348.0" prefWidth="435.0" />
+				<Separator layoutX="8.0" layoutY="79.0" prefHeight="13.0" prefWidth="435.0" />
 			</children>
 			<BorderPane.margin>
 				<Insets right="10.0" />
 			</BorderPane.margin>
 		</Pane>
-		<TableView fx:id="tablePatientListDetails" layoutX="462.0"
-			layoutY="97.0" prefHeight="100.0" prefWidth="450.0">
+		<TableView fx:id="tablePatientListDetails" layoutX="462.0" layoutY="97.0" prefHeight="100.0" prefWidth="515.0">
 			<columns>
-				<TableColumn fx:id="colIDDetails" prefWidth="77.0"
-					text="ID" />
-				<TableColumn fx:id="colsg" maxWidth="300.0"
-					minWidth="20.0" prefWidth="53.0" text="sg" />
+				<TableColumn fx:id="colIDDetails" prefWidth="70.0" text="ID" />
+				<TableColumn fx:id="colsg" maxWidth="300.0" minWidth="20.0" prefWidth="60.0" text="sg" />
 				<TableColumn fx:id="colsc" prefWidth="53.0" text="sc" />
-				<TableColumn fx:id="colhemo" prefWidth="56.0"
-					text="hemo" />
-				<TableColumn fx:id="coldm" minWidth="6.0"
-					prefWidth="61.0" text="dm" />
-				<TableColumn fx:id="colpe" minWidth="0.0"
-					prefWidth="52.0" text="pe" />
-				<TableColumn fx:id="colClassDetails" prefWidth="82.0"
-					text="Class" />
+				<TableColumn fx:id="colhemo" prefWidth="56.0" text="hemo" />
+				<TableColumn fx:id="coldm" minWidth="6.0" prefWidth="61.0" text="dm" />
+				<TableColumn fx:id="colpe" minWidth="0.0" prefWidth="52.0" text="pe" />
+				<TableColumn fx:id="colDiagRec1" prefWidth="81.0" text="DiagRec" />
+            <TableColumn fx:id="colPhysRec1" text="PhysRec" />
 			</columns>
 		</TableView>
-		<Label layoutX="465.0" layoutY="70.0"
-			text="Selcted Patient Medical Record ">
+		<Label layoutX="465.0" layoutY="70.0" text="Selcted Patient Medical Record ">
 			<font>
 				<Font name="Verdana Bold" size="16.0" />
 			</font>
 		</Label>
-		<TableView fx:id="tableCurrentPatienDetails" layoutX="462.0"
-			layoutY="257.0" prefHeight="100.0" prefWidth="450.0">
+		<TableView fx:id="tableCurrentPatienDetails" layoutX="462.0" layoutY="257.0" prefHeight="100.0" prefWidth="515.0">
 			<columns>
-				<TableColumn fx:id="colIDCurrentDetails"
-					prefWidth="79.0" text="ID" />
-				<TableColumn fx:id="colcur_sg" maxWidth="300.0"
-					minWidth="20.0" prefWidth="59.0" text="sg" />
-				<TableColumn fx:id="colcur_sc" prefWidth="54.0"
-					text="sc" />
-				<TableColumn fx:id="colcur_hemo" prefWidth="55.0"
-					text="hemo" />
-				<TableColumn fx:id="colcur_dm" prefWidth="61.0"
-					text="dm" />
-				<TableColumn fx:id="colcur_pe" prefWidth="56.0"
-					text="pe" />
-				<TableColumn prefWidth="66.0" />
+				<TableColumn fx:id="colIDCurrentDetails" prefWidth="68.0" text="ID" />
+				<TableColumn fx:id="colcur_sg" maxWidth="300.0" minWidth="20.0" prefWidth="70.0" text="sg" />
+				<TableColumn fx:id="colcur_sc" prefWidth="54.0" text="sc" />
+				<TableColumn fx:id="colcur_hemo" prefWidth="55.0" text="hemo" />
+				<TableColumn fx:id="colcur_dm" prefWidth="61.0" text="dm" />
+				<TableColumn fx:id="colcur_pe" prefWidth="56.0" text="pe" />
+				<TableColumn prefWidth="75.0" />
 			</columns>
 		</TableView>
 		<Label layoutX="462.0" layoutY="223.0" text="Current Patient ">
@@ -103,47 +75,30 @@
 				<Font name="Verdana Bold" size="15.0" />
 			</font>
 		</Label>
-		<Label layoutX="681.0" layoutY="223.0" text="ID">
+		<Label layoutX="736.0" layoutY="224.0" text="ID">
 			<font>
 				<Font size="13.0" />
 			</font>
 		</Label>
-		<TextField fx:id="txtSelectedID" layoutX="709.0"
-			layoutY="217.0" prefHeight="25.0" prefWidth="101.0" />
-		<Button fx:id="btnViewMedicalRec" layoutX="850.0"
-			layoutY="215.0" mnemonicParsing="false" onAction="#viewMedical"
-			prefHeight="25.0" prefWidth="62.0" styleClass="success" text="View" />
-		<Button fx:id="btnViewRec" layoutX="614.0" layoutY="367.0"
-			mnemonicParsing="false" onAction="#viewRec" prefHeight="25.0"
-			prefWidth="167.0" styleClass="success" text="View Recommendation" />
+		<TextField fx:id="txtSelectedID" layoutX="771.0" layoutY="218.0" prefHeight="25.0" prefWidth="101.0" />
+		<Button fx:id="btnViewMedicalRec" layoutX="906.0" layoutY="216.0" mnemonicParsing="false" onAction="#viewMedical" prefHeight="25.0" prefWidth="62.0" styleClass="success" text="View" />
+		<Button fx:id="btnViewRec" layoutX="653.0" layoutY="366.0" mnemonicParsing="false" onAction="#viewRec" prefHeight="25.0" prefWidth="167.0" styleClass="success" text="View Recommendation" />
 		<Label layoutX="363.0" layoutY="468.0" />
 		<Label layoutX="466.0" layoutY="429.0" text="Explanation">
 			<font>
 				<Font size="14.0" />
 			</font>
 		</Label>
-		<Label fx:id="lblCKDresult" alignment="CENTER"
-			contentDisplay="CENTER" layoutX="625.0" layoutY="406.0"
-			prefHeight="46.0" prefWidth="146.0" text="__" textFill="RED">
+		<Label fx:id="lblCKDresult" alignment="CENTER" contentDisplay="CENTER" layoutX="653.0" layoutY="406.0" prefHeight="46.0" prefWidth="167.0" text="__" textFill="RED">
 			<font>
 				<Font size="30.0" />
 			</font>
 		</Label>
-		<Separator layoutX="8.0" layoutY="446.0" prefHeight="13.0"
-			prefWidth="987.0" />
-		<Button fx:id="btnAgree" disable="true" layoutX="897.0"
-			layoutY="461.0" mnemonicParsing="false" onAction="#agree"
-			prefHeight="32.0" prefWidth="79.0" styleClass="success" text="Agree" />
-		<Button fx:id="btnDisagree" disable="true" layoutX="897.0"
-			layoutY="497.0" mnemonicParsing="false" onAction="#disagree"
-			prefHeight="32.0" prefWidth="79.0" styleClass="success"
-			text="Disagree" />
-		<Button fx:id="btnPrint" disable="true" layoutX="898.0"
-			layoutY="535.0" mnemonicParsing="false" onAction="#print"
-			prefHeight="32.0" prefWidth="78.0" styleClass="success" text="Print" />
-		<ImageView fx:id="imgDTRule" fitHeight="113.0"
-			fitWidth="884.0" layoutX="7.0" layoutY="465.0" pickOnBounds="true"
-			preserveRatio="true" />
+		<Separator layoutX="8.0" layoutY="446.0" prefHeight="13.0" prefWidth="978.0" />
+		<Button fx:id="btnAgree" disable="true" layoutX="897.0" layoutY="461.0" mnemonicParsing="false" onAction="#agree" prefHeight="32.0" prefWidth="79.0" styleClass="success" text="Agree" />
+		<Button fx:id="btnDisagree" disable="true" layoutX="897.0" layoutY="497.0" mnemonicParsing="false" onAction="#disagree" prefHeight="32.0" prefWidth="79.0" styleClass="success" text="Disagree" />
+		<Button fx:id="btnPrint" disable="true" layoutX="898.0" layoutY="535.0" mnemonicParsing="false" onAction="#print" prefHeight="32.0" prefWidth="78.0" styleClass="success" text="Print" />
+		<ImageView fx:id="imgDTRule" fitHeight="100.0" fitWidth="884.0" layoutX="7.0" layoutY="465.0" pickOnBounds="true" preserveRatio="true" />
 	</children>
 
 </AnchorPane>

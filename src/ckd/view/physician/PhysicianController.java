@@ -25,6 +25,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.IndexedCell;
 import javafx.scene.control.Label;
@@ -72,7 +73,8 @@ public class PhysicianController implements Initializable {
 			colhemo.setCellValueFactory(new PropertyValueFactory<>("hemo"));
 			coldm.setCellValueFactory(new PropertyValueFactory<>("dm"));
 			colpe.setCellValueFactory(new PropertyValueFactory<>("pe"));
-			colClassDetails.setCellValueFactory(new PropertyValueFactory<>("is_ckd"));
+			colDiagRec1.setCellValueFactory(new PropertyValueFactory<>("DiagRec"));
+			colPhysRec1.setCellValueFactory(new PropertyValueFactory<>("PhysRec"));
 
 			tablePatientListDetails.setItems(oblist3);
 
@@ -92,7 +94,9 @@ public class PhysicianController implements Initializable {
 	@FXML
 	private TableColumn<PersonalInfo, String> colAge;
 	@FXML
-	private TableColumn<PersonalInfo, String> colClass;
+	private TableColumn<PersonalInfo, String> colDiagRec;
+	@FXML
+	private TableColumn<PersonalInfo, String> colPhysRec;
 	@FXML
 	private TableColumn colControl;
 
@@ -112,7 +116,9 @@ public class PhysicianController implements Initializable {
 	@FXML
 	private TableColumn<MedicalRecordSelected, String> colpe;
 	@FXML
-	private TableColumn<MedicalRecordSelected, String> colClassDetails;
+	private TableColumn<MedicalRecordSelected, String> colDiagRec1;
+	@FXML
+	private TableColumn<MedicalRecordSelected, String> colPhysRec1;
 
 	// DEFINE TABLE RECORD DETAIL OF CURRENT PATIENT
 	@FXML
@@ -157,12 +163,7 @@ public class PhysicianController implements Initializable {
 
 		try {
 			adapter = new Adapter();
-			oblist = FXCollections.observableArrayList();
-			ArrayList<PersonalInfo>patient_list = adapter.getPatientInfo();
-			
-			for (PersonalInfo p: patient_list){
-				oblist.add(p);
-			}
+			update_patient_list();
 			
 		} catch (SQLException ex) {
 			Logger.getLogger(PhysicianController.class.getName()).log(Level.SEVERE, null, ex);
@@ -172,19 +173,30 @@ public class PhysicianController implements Initializable {
 		colName = new TableColumn("Name");
 		colGender = new TableColumn("Gender");
 		colAge = new TableColumn("Age");
-		colClass = new TableColumn("Class");
-		colControl = new TableColumn("Control");
+		colDiagRec = new TableColumn("DiagRec");
+		colPhysRec = new TableColumn("PhysRec");
 
 		setCellValueFactories();
 
 		// TableColumn controlCol = new TableColumn("Control");
-		tablePatientList.getColumns().addAll(colID, colName, colGender, colAge, colClass, colControl);
+		tablePatientList.getColumns().addAll(colID, colName, colGender, colAge, colDiagRec, colPhysRec);
 
 		tablePatientList.getSelectionModel().selectedIndexProperty().addListener(new RowSelectChangeListener());
 
-		tablePatientList.setItems(oblist);
+		
 		// tblPatientList.getSelectionModel().select(0);
 
+	}
+	
+	public void update_patient_list() throws SQLException{
+		oblist = FXCollections.observableArrayList();
+		ArrayList<PersonalInfo>patient_list = adapter.getPatientInfo();
+		
+		for (PersonalInfo p: patient_list){
+			oblist.add(p);
+		}
+		
+		tablePatientList.setItems(oblist);
 	}
 	
 	public void viewMedical(ActionEvent actionEvent) {
@@ -214,23 +226,48 @@ public class PhysicianController implements Initializable {
 		colName.setCellValueFactory(new PropertyValueFactory<>("full_name"));
 		colGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
 		colAge.setCellValueFactory(new PropertyValueFactory<>("age"));
-		colClass.setCellValueFactory(new PropertyValueFactory<>("is_ckd"));
+		colDiagRec.setCellValueFactory(new PropertyValueFactory<>("diagRec"));
+		colPhysRec.setCellValueFactory(new PropertyValueFactory<>("physRec"));
 	}
 
-	public void agree(ActionEvent actionEvent) {
-		String CKD_result = lblCKDresult.getText();
-		adapter.insertRecResult(current_patient, CKD_result);
-	}
-
-	public void disagree(ActionEvent actionEvent) {
-		String CKD_result;
+	public void agree(ActionEvent actionEvent) throws SQLException {
+		String CKD_result2;
+		String CKD_result1;
 		if(lblCKDresult.getText().equals("CKD")){
-			CKD_result = "Not CKD";
+			CKD_result1 = "ckd";
+			CKD_result2 = "ckd";
 		} else{
-			CKD_result = "CKD";
+			CKD_result1 = "notckd";
+			CKD_result2 = "notckd";
 		}
-			
-		adapter.insertRecResult(current_patient, CKD_result);
+		
+		adapter.insertRecResult(current_patient, CKD_result1, CKD_result2);
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setTitle("Diagnosis Recommendation");
+		alert.setHeaderText("Diagnosis Recommendation Result");
+		alert.setContentText(CKD_result2);
+		alert.show();
+		update_patient_list();
+		
+	}
+
+	public void disagree(ActionEvent actionEvent) throws SQLException{
+		String CKD_result2;
+		String CKD_result1;
+		if(lblCKDresult.getText().equals("CKD")){
+			CKD_result1 = "ckd";
+			CKD_result2 = "notckd";
+		} else{
+			CKD_result1 = "notckd";
+			CKD_result2 = "ckd";
+		}
+		adapter.insertRecResult(current_patient, CKD_result1, CKD_result2);
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setTitle("Diagnosis Recommendation");
+		alert.setHeaderText("Diagnosis Recommendation Result");
+		alert.setContentText(CKD_result2);
+		alert.show();
+		update_patient_list();
 	}
 
 	public void print(ActionEvent actionEvent) {
@@ -240,12 +277,11 @@ public class PhysicianController implements Initializable {
 	public void viewRec(ActionEvent actionEvent) {
 		try {
 			boolean ckd_result;
-			// ckd_result= VisualizeDecisionTree.testDecisionTree1();
-			// 1.025,0.6,15.9,no,no,? <=> sg, sc, hemo, dm, pe, class
 			if(current_patient!=null){
 				String medicalRec = current_patient.getDTString();
+				System.out.println(medicalRec);
 				ckd_result = VisualizeDecisionTree.detectCKD(medicalRec);
-				System.out.println(ckd_result);
+//				ckd_result = VisualizeDecisionTree.testDecisionTree1();
 				if (ckd_result) {
 					lblCKDresult.setText("CKD");
 				} else {
@@ -253,11 +289,6 @@ public class PhysicianController implements Initializable {
 				}
 
 				Image img;
-				// img = VisualizeDecisionTree.testDecisionTree();
-				double sc = 0.6;
-				double hemo = 15.9;
-				String dm = "no";
-				double sg = 0.6;
 
 				img = VisualizeDecisionTree.DTRunner(current_patient);
 				imgDTRule.setImage(img);

@@ -10,7 +10,7 @@ public class DBConnection {
 	public static Connection getConnection() {
 		String dbName = "ckd";
 		String userName = "root";
-		String password = "";
+		String password = "root";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost/" + dbName, userName, password);

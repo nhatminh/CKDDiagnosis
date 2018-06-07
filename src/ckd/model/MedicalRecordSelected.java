@@ -2,9 +2,9 @@ package ckd.model;
 
 public class MedicalRecordSelected {
 	int id;
-	String sg, sc, hemo, dm, pe, is_ckd;
+	String sg, sc, hemo, dm, pe, diagRec, physRec;
 
-	public MedicalRecordSelected(int id, String sg, String sc, String hemo, String dm, String pe, String is_ckd) {
+	public MedicalRecordSelected(int id, String sg, String sc, String hemo, String dm, String pe, String diagRec, String physRec) {
 		super();
 		this.id = id;
 		this.sg = sg;
@@ -12,7 +12,8 @@ public class MedicalRecordSelected {
 		this.hemo = hemo;
 		this.dm = dm;
 		this.pe = pe;
-		this.is_ckd = is_ckd;
+		this.diagRec = diagRec;
+		this.physRec = physRec;
 	}
 
 	public int getId() {
@@ -63,12 +64,20 @@ public class MedicalRecordSelected {
 		this.pe = pe;
 	}
 
-	public String getIs_ckd() {
-		return is_ckd;
+	public String getPhysRec() {
+		return physRec;
 	}
 
-	public void setIs_ckd(String is_ckd) {
-		this.is_ckd = is_ckd;
+	public void setPhysRec(String physRec) {
+		this.physRec = physRec;
+	}
+	
+	public String getDiagRec() {
+		return diagRec;
+	}
+
+	public void setDiagRec(String diagRec) {
+		this.diagRec = diagRec;
 	}
 
 }

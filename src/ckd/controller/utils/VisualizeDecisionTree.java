@@ -114,7 +114,7 @@ public class VisualizeDecisionTree {
     public static boolean detectCKD(String toWrite) throws Exception {
     	// Load model
         Classifier cls = (Classifier) weka.core.SerializationHelper.read(rootPath+"\\DecisionTree_Model_5att.model");
-        
+
     	FileWriter fw = new FileWriter(rootPath+"\\test_5att.arff", true);
         fw.write("\n");
         fw.write(toWrite);
