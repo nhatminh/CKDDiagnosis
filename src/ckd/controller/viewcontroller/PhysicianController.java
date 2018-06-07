@@ -1,4 +1,4 @@
-package ckd.view.physician;
+package ckd.controller.viewcontroller;
 
 import java.io.IOException;
 import java.net.URL;

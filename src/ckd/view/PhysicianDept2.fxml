@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="575.0" prefWidth="995.0" stylesheets="@../bootstrap3.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ckd.view.physician.PhysicianController">
+<AnchorPane prefHeight="575.0" prefWidth="995.0" stylesheets="@../bootstrap3.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ckd.controller.viewcontroller.PhysicianController">
 	<children>
 
 		<Pane prefHeight="70.0" BorderPane.alignment="CENTER">

@@ -1,4 +1,4 @@
-package ckd.view;
+package ckd.controller.viewcontroller;
 import java.io.IOException;
 
 import ckd.Main;

@@ -1,4 +1,4 @@
-package ckd.view;
+package ckd.controller.viewcontroller;
 import javafx.fxml.FXML;
 
 import java.io.IOException;

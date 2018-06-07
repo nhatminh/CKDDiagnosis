@@ -1,4 +1,4 @@
-package ckd.view;
+package ckd.controller.viewcontroller;
 
 import java.sql.Connection;
 import java.sql.SQLException;

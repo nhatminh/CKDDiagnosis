@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="500.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ckd.view.receptionist.ReceptionistController">
+<BorderPane prefHeight="500.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ckd.controller.viewcontroller.ReceptionistController">
    <top>
       <TextArea editable="false" prefHeight="50.0" prefWidth="809.0" text="RECEPTIONIST DEPARTMENT" BorderPane.alignment="CENTER">
          <font>

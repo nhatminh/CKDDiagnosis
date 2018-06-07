@@ -1,4 +1,4 @@
-package ckd.view.receptionist;
+package ckd.controller.viewcontroller;
 
 import java.io.IOException;
 

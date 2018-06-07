@@ -45,14 +45,14 @@ public class Main extends Application {
 	
 	public static void showReceptionistScene() throws IOException{
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("view/receptionist/ReceptionDept.fxml"));
+		loader.setLocation(Main.class.getResource("view/ReceptionDept.fxml"));
 		BorderPane receptionist = loader.load();
 		mainLayout.setCenter(receptionist);
 	}
 	
 	public static void showPhysicianScene() throws IOException{
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("view/physician/PhysicianDept2.fxml"));
+		loader.setLocation(Main.class.getResource("view/PhysicianDept2.fxml"));
 		AnchorPane physician = loader.load();
 		mainLayout.setCenter(physician);
 	}
