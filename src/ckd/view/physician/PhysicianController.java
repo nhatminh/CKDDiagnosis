@@ -5,6 +5,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,6 +15,7 @@ import ckd.controller.utils.VisualizeDecisionTree;
 import ckd.model.MedicalRecord;
 import ckd.model.MedicalRecordSelected;
 import ckd.model.PersonalInfo;
+import ckd.model.DBAdapter.Adapter;
 import ckd.model.DBAdapter.DBConnection;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -38,6 +40,7 @@ public class PhysicianController implements Initializable {
 	private ObservableList<PersonalInfo> oblist;
 	private ObservableList<MedicalRecord> oblist2;
 	private ObservableList<MedicalRecordSelected> oblist3;
+	private Adapter adapter;
 
 	private class RowSelectChangeListener implements ChangeListener<Number> {
 		@Override
@@ -53,14 +56,12 @@ public class PhysicianController implements Initializable {
 			PersonalInfo p = oblist.get(ix);
 
 			try {
-				Connection con = DBConnection.getConnection();
 				oblist3 = FXCollections.observableArrayList();
-				String sql = "SELECT * from medical_record WHERE id= " + p.getId() + " ";
-				ResultSet rs = con.createStatement().executeQuery(sql);
-				while (rs.next()) {
-					oblist3.add(new MedicalRecordSelected(rs.getInt("id"), rs.getString("sg"), rs.getString("sc"),
-							rs.getString("hemo"), rs.getString("dm"), rs.getString("pe"), rs.getString("is_ckd")));
+				ArrayList<MedicalRecordSelected>med_rec = adapter.getMedicalRecord(p.getId());
+				for (MedicalRecordSelected record:med_rec){
+					oblist3.add(record);
 				}
+				
 			} catch (SQLException ex) {
 				Logger.getLogger(PhysicianController.class.getName()).log(Level.SEVERE, null, ex);
 			}
@@ -153,14 +154,14 @@ public class PhysicianController implements Initializable {
 		// txtSelectedID.setText(String.valueOf(p.getId()));
 
 		try {
-			Connection con = DBConnection.getConnection();
+			adapter = new Adapter();
 			oblist = FXCollections.observableArrayList();
-			String sql = "SELECT DISTINCT * from personal_info INNER JOIN medical_record ON personal_info.id=medical_record.id";
-			ResultSet rs = con.createStatement().executeQuery(sql);
-			while (rs.next()) {
-				oblist.add(new PersonalInfo(rs.getInt("id"), rs.getString("full_name"), rs.getString("gender"),
-						rs.getString("age"), rs.getString("is_ckd")));
+			ArrayList<PersonalInfo>patient_list = adapter.getPatientInfo();
+			
+			for (PersonalInfo p: patient_list){
+				oblist.add(p);
 			}
+			
 		} catch (SQLException ex) {
 			Logger.getLogger(PhysicianController.class.getName()).log(Level.SEVERE, null, ex);
 		}
@@ -186,14 +187,11 @@ public class PhysicianController implements Initializable {
 
 	public void viewMedical(ActionEvent actionEvent) {
 		try {
-			Connection con = DBConnection.getConnection();
 			oblist2 = FXCollections.observableArrayList();
-			String sql = "SELECT * from medical_record WHERE id= " + txtSelectedID.getText() + " ";
-			ResultSet rs = con.createStatement().executeQuery(sql);
-			while (rs.next()) {
-				oblist2.add(new MedicalRecord(rs.getInt("id"), rs.getString("sg"), rs.getString("sc"),
-						rs.getString("hemo"), rs.getString("dm"), rs.getString("pe")));
-			}
+			ArrayList<MedicalRecord>med_rec = adapter.getMedicalRecord(txtSelectedID.getText());
+			for (MedicalRecord record:med_rec){
+				oblist2.add(record);
+			}		
 		} catch (SQLException ex) {
 			Logger.getLogger(PhysicianController.class.getName()).log(Level.SEVERE, null, ex);
 		}
@@ -210,19 +208,6 @@ public class PhysicianController implements Initializable {
 	}
 
 	private void setCellValueFactories() {
-		// idCol.setCellValueFactory(
-		// new PropertyValueFactory<Patient,String>("id")
-		// );
-		// idCol.setMinWidth(120);
-		// nameCol.setCellValueFactory(
-		// new PropertyValueFactory<Patient,String>("name")
-		// );
-		// nameCol.setMinWidth(120);
-		// classCol.setCellValueFactory(
-		// new PropertyValueFactory<Patient,String>("pclass")
-		// );
-		// classCol.setMinWidth(120);
-
 		colID.setCellValueFactory(new PropertyValueFactory<>("id"));
 		colName.setCellValueFactory(new PropertyValueFactory<>("full_name"));
 		colGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
