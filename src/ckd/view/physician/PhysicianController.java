@@ -148,6 +148,8 @@ public class PhysicianController implements Initializable {
 	@FXML
 	ImageView imgDTRule;
 
+	private MedicalRecord current_patient;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -184,12 +186,13 @@ public class PhysicianController implements Initializable {
 		// tblPatientList.getSelectionModel().select(0);
 
 	}
-
+	
 	public void viewMedical(ActionEvent actionEvent) {
 		try {
 			oblist2 = FXCollections.observableArrayList();
-			ArrayList<MedicalRecord>med_rec = adapter.getMedicalRecord(txtSelectedID.getText());
+			ArrayList<MedicalRecord> med_rec = adapter.getMedicalRecord(txtSelectedID.getText());
 			for (MedicalRecord record:med_rec){
+				current_patient = record;
 				oblist2.add(record);
 			}		
 		} catch (SQLException ex) {
@@ -204,7 +207,6 @@ public class PhysicianController implements Initializable {
 		colcur_pe.setCellValueFactory(new PropertyValueFactory<>("pe"));
 
 		tableCurrentPatienDetails.setItems(oblist2);
-
 	}
 
 	private void setCellValueFactories() {
@@ -216,11 +218,19 @@ public class PhysicianController implements Initializable {
 	}
 
 	public void agree(ActionEvent actionEvent) {
-
+		String CKD_result = lblCKDresult.getText();
+		adapter.insertRecResult(current_patient, CKD_result);
 	}
 
 	public void disagree(ActionEvent actionEvent) {
-
+		String CKD_result;
+		if(lblCKDresult.getText().equals("CKD")){
+			CKD_result = "Not CKD";
+		} else{
+			CKD_result = "CKD";
+		}
+			
+		adapter.insertRecResult(current_patient, CKD_result);
 	}
 
 	public void print(ActionEvent actionEvent) {
@@ -229,37 +239,37 @@ public class PhysicianController implements Initializable {
 
 	public void viewRec(ActionEvent actionEvent) {
 		try {
-
 			boolean ckd_result;
 			// ckd_result= VisualizeDecisionTree.testDecisionTree1();
 			// 1.025,0.6,15.9,no,no,? <=> sg, sc, hemo, dm, pe, class
-			String medicalRec = "1.025,0.6,15.9,no,no,?";
-			ckd_result = VisualizeDecisionTree.detectCKD(medicalRec);
+			if(current_patient!=null){
+				String medicalRec = current_patient.getDTString();
+				ckd_result = VisualizeDecisionTree.detectCKD(medicalRec);
+				System.out.println(ckd_result);
+				if (ckd_result) {
+					lblCKDresult.setText("CKD");
+				} else {
+					lblCKDresult.setText("Not CKD");
+				}
 
-			System.out.println(ckd_result);
-			if (ckd_result) {
-				lblCKDresult.setText("CKD");
-			} else {
-				lblCKDresult.setText("Not CKD");
+				Image img;
+				// img = VisualizeDecisionTree.testDecisionTree();
+				double sc = 0.6;
+				double hemo = 15.9;
+				String dm = "no";
+				double sg = 0.6;
+
+				img = VisualizeDecisionTree.DTRunner(current_patient);
+				imgDTRule.setImage(img);
+				imgDTRule.setPreserveRatio(true);
+				imgDTRule.setSmooth(true);
+				imgDTRule.setCache(true);
+
+				btnAgree.setDisable(false);
+				btnDisagree.setDisable(false);
+				btnPrint.setDisable(false);
 			}
-
-			Image img;
-			// img = VisualizeDecisionTree.testDecisionTree();
-			double sc = 0.6;
-			double hemo = 15.9;
-			String dm = "no";
-			double sg = 0.6;
-
-			img = VisualizeDecisionTree.DTRunner(sc, hemo, dm, sg);
-			imgDTRule.setImage(img);
-			imgDTRule.setPreserveRatio(true);
-			imgDTRule.setSmooth(true);
-			imgDTRule.setCache(true);
-
-			btnAgree.setDisable(false);
-			btnDisagree.setDisable(false);
-			btnPrint.setDisable(false);
-
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

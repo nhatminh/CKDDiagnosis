@@ -72,9 +72,9 @@ public class VisualizeDecisionTree {
         return detectCKD(toWrite);
 	}
 	
-//	public static Image DTRunner(MedicalRecord med) {
-//		return DTRunner(med.sc, me);
-//	}
+	public static Image DTRunner(MedicalRecord med) throws NumberFormatException, IOException {
+		return DTRunner(Double.parseDouble(med.getSc()), Double.parseDouble(med.getHemo()), med.getDm(), Double.parseDouble(med.getSg()));
+	}
 	
 	public static Image DTRunner(double sc, double hemo, String dm,  double sg) throws IOException{
 		// Display branch of decision tree in each specific case

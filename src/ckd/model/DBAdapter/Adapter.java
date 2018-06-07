@@ -52,4 +52,8 @@ public class Adapter {
 		return patient_list;
 	}
 	
+	public void insertRecResult(MedicalRecord med, String CKD_result){
+		//TODO
+	}
+	
 }

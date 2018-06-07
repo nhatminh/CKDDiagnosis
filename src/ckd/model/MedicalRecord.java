@@ -61,5 +61,10 @@ public class MedicalRecord {
 	public void setPe(String pe) {
 		this.pe = pe;
 	}
+	
+	public String getDTString(){
+		// 1.025,0.6,15.9,no,no,? <=> sg, sc, hemo, dm, pe, class
+		return sg +"," +sc +","+hemo +","+dm+","+pe+","+"?";
+	}
 
 }
